@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MTN Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">MTN</div>
+      <nav>
+        <ul>
+          <li class="active">Overview</li>
+          <li>Charts</li>
+          <li>Reports</li>
+          <li>Settings</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="dashboard">
+      <header>
+        <h1>Dashboard</h1>
+        <div class="filters">
+          <input type="text" id="search" placeholder="Search transactions" />
+          <select id="typeFilter">
+            <option value="">All Types</option>
+            <option>Incoming Money</option>
+            <option>Payments to Code Holders</option>
+            <option>Transfers to Mobile Numbers</option>
+            <option>Bank Deposits</option>
+            <option>Airtime Bill Payments</option>
+            <option>Cash Power Bill Payments</option>
+            <option>Transactions Initiated by Third Parties</option>
+            <option>Withdrawals from Agents</option>
+            <option>Bank Transfers</option>
+            <option>Internet and Voice Bundle Purchases</option>
+          </select>
+          <input type="number" id="amountFilter" placeholder="Amount" />
+        </div>
+      </header>
+
+      <section id="overview">
+        <div class="summary">
+          <div>Total Transactions: <span id="totalTrans">0</span></div>
+          <div>Incoming: <span id="incoming">0</span></div>
+          <div>Payments: <span id="payments">0</span></div>
+          <div>Deposits: <span id="deposits">0</span></div>
+        </div>
+        <div class="sms-data" id="transactionList">
+          <!-- Dynamic Transactions -->
+        </div>
+      </section>
+
+      <section id="charts" class="hidden">
+        <canvas id="barChart"></canvas>
+        <canvas id="pieChart"></canvas>
+      </section>
+
+      <section id="reports" class="hidden">
+        <div class="report-header">
+          <h2>Transactions Report</h2>
+          <button id="downloadReport">Download Report</button>
+        </div>
+        <div id="reportList"></div>
+      </section>
+
+      <section id="settings" class="hidden">
+        <h2>Settings</h2>
+        <label>
+          <input type="checkbox" id="darkModeToggle" />
+          Dark Mode
+        </label>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
