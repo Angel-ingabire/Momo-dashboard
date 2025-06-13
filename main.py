@@ -77,7 +77,7 @@ for sms in root.findall('sms'):
         if any(keyword in smsbody for keyword in keywords):
             CATEGORY = cat
             break
-    type_value = "credit" if "received" in smsbody.lower() else "debit"
+    TYPE_VALUE = "credit" if "received" in smsbody.lower() else "debit"
 
     transactions.append({
         "category": CATEGORY,
@@ -86,7 +86,7 @@ for sms in root.findall('sms'):
         "amount": amount,
         "transaction_id": transaction_id,
         "body": smsbody,
-        "type": type_value
+        "type": TYPE_VALUE
     })
 
 # MySQL Connection Setup
