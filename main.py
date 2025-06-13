@@ -5,6 +5,8 @@ import re
 import logging
 from datetime import datetime
 
+import mysql.connector
+
 print("Connected successfully!")
 
 # Configure logging for unprocessed messages
@@ -75,6 +77,7 @@ for sms in root.findall('sms'):
         if any(keyword in smsbody for keyword in keywords):
             CATEGORY = cat
             break
+    type_value = "credit" if "received" in smsbody.lower() else "debit"
 
     transactions.append({
         "category": CATEGORY,
@@ -82,9 +85,62 @@ for sms in root.findall('sms'):
         "time": formatted_time,
         "amount": amount,
         "transaction_id": transaction_id,
-        "body": smsbody
+        "body": smsbody,
+        "type": type_value
     })
 
-# Print results (for preview)
+# MySQL Connection Setup
+try:
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root",
+        database="momo_database"
+    )
+    print("Connected to MySQL database!")
+except mysql.connector.Error as err:
+    print(f"Error connecting to MySQL: {err}")
+    exit()
+cursor = conn.cursor()
+
+# Create table if not exists
+CREATE_TABLE_QUERY = """
+CREATE TABLE IF NOT EXISTS transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    transaction_id VARCHAR(50) NULL,
+    category VARCHAR(255),
+    sms_body TEXT,
+    sms_date DATE,
+    sms_time TIME,
+    amount DECIMAL(10,2),
+    type VARCHAR(50)
+);
+"""
+cursor.execute(CREATE_TABLE_QUERY)
+conn.commit()
+
+# Insert Transactions into MySQL
+INSERT_QUERY = """
+    INSERT INTO transactions (transaction_id, category, sms_body, sms_date, sms_time, amount, type)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+"""
+
 for transaction in transactions:
-    print(transaction)
+    try:
+        cursor.execute(INSERT_QUERY, (
+            transaction["transaction_id"],
+            transaction["category"],
+            transaction["body"],
+            transaction["date"],
+            transaction["time"],
+            transaction["amount"],
+            transaction["type"]
+        ))
+    except mysql.connector.Error as e:
+        logging.error("Error inserting transaction: %s\n%s", transaction["body"], e)
+# Commit and Close Connection
+conn.commit()
+cursor.close()
+conn.close()
+
+print("Transactions successfully inserted into MySQL!")
