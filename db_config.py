@@ -2,6 +2,6 @@
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'root',
+    'password': 'your_password',
     'database': 'momo_database'
 }
