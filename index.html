@@ -64,13 +64,48 @@
 
       <section id="reports" class="hidden">
         <div class="report-header">
-          <h2>Transactions Report</h2>
-          <button id="downloadReport">Download Report</button>
-          <div class="sms-data" id="transactionList">
-            <!-- Dynamic Transactions -->
+          <h2>Transaction Report</h2>
+          <div class="date-range">
+            <input type="date" id="report-start-date"> to
+            <input type="date" id="report-end-date">
+            <button id="applyReportFilter">Apply</button>
           </div>
         </div>
-        <div id="reportList"></div>
+        <div class="summary-cards">
+          <div class="card">
+            <div>Total Transactions</div>
+            <div id="total-count">0</div>
+          </div>
+          <div class="card">
+            <div>Total Amount</div>
+            <div id="total-amount">0 RWF</div>
+          </div>
+          <div class="card">
+            <div>Average Transaction</div>
+            <div id="avg-amount">0 RWF</div>
+          </div>
+          <div class="card">
+            <div>Last Transaction</div>
+            <div id="last-date">-</div>
+          </div>
+        </div>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Amount (RWF)</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="report-data">
+            <!-- Filled by JavaScript -->
+          </tbody>
+        </table>
+        <div class="export-options">
+          <button id="exportCSV">Download CSV</button>
+          <button id="exportPDF">Download PDF</button>
+        </div>
       </section>
 
       <section id="settings" class="hidden">
