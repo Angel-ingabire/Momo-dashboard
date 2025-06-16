@@ -6,7 +6,7 @@ Before we proceed, here is the link to our REPORT documentation: https://docs.go
 #Front-end functionality and features.
 
 # We used plain html and css to develop and style the front-end and some java-script for responsivenes
-The  Front-end conprises of three ways the user can filter transactions i.e through types by drop-down, manual search like a name 
+The  Front-end conprises of three ways the user can filter transactions i.e through types by drop-down, manual search like a name .
 and also search by inputing amount and it will then display data on the page according to the user's request.
 # The overview page also comprises of data displayed inform of types names amount and the details aswell, since the tyransactions were alot, we included pages so that the user canbe able to still go through all the transactions without any problem
 the overview page, also has summary cards summarizing the total number of transactions inform of total transactions, incoming, deposits, and payments.
