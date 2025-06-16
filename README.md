@@ -1,6 +1,8 @@
 #Momo Dashboard.
 #This is a momo Dashboard website that allows a user to search downloard and view transactions sorted in credit or debit, and even types like incoming transactions, Bank transfers, bill payments and more......
 
+Before we proceed, here is the link to our REPORT documentation: https://docs.google.com/document/d/1BpDY5XZuoLBOatGJhqOkX6Zk6NcFlVHuShQRpDsbIyA/edit?usp=sharing
+
 #Front-end functionality and features.
 
 # We used plain html and css to develop and style the front-end and some java-script for responsivenes
