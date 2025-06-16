@@ -2,7 +2,7 @@
 
 import xml.etree.ElementTree as ET
 import re
-import logging
+import 
 from datetime import datetime
 
 import mysql.connector
