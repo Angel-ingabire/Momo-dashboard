@@ -13,7 +13,7 @@
   <div class="container">
     <aside class="sidebar">
       <div class="logo">MTN</div>
-      <nav>
+      <nav id="sidebarNav">
         <ul>
           <li class="active">Overview</li>
           <li>Charts</li>
@@ -25,9 +25,10 @@
 
     <main class="dashboard">
       <header>
-        <h1>Dashboard</h1>
+	<h1 title="MTN MoMo Dashboard Overview">Dashboard</h1>
         <div class="filters">
-          <input type="text" id="search" placeholder="Search transactions" />
+	<label for="search" class="visually-hidden">Search Transactions</label>
+	<input type="text" id="search" placeholder="Search transactions" />
           <select id="typeFilter">
             <option value="">All Types</option>
             <option>Incoming Money</option>
@@ -41,14 +42,14 @@
             <option>Bank Transfers</option>
             <option>Internet and Voice Bundle Purchases</option>
           </select>
-          <input type="number" id="amountFilter" placeholder="Amount" />
+          <input type="number" id="amountFilter" placeholder="e.g. 1000" />
         </div>
       </header>
 
       <section id="overview">
         <div class="summary">
           <div>Total Transactions: <span id="totalTrans">0</span></div>
-          <div>Incoming: <span id="incoming">0</span></div>
+	  <div>Total Incoming Transactions: <span id="incoming">0</span></div>
           <div>Payments: <span id="payments">0</span></div>
           <div>Deposits: <span id="deposits">0</span></div>
         </div>
@@ -58,10 +59,14 @@
       </section>
 
       <section id="charts" class="hidden">
-        <canvas id="barChart"></canvas>
-        <canvas id="pieChart"></canvas>
+        <h2 style="margin-bottom: 10px;">Transaction Insights</h2>
+	<div class="chart-container">
+	  <canvas id="barChart"></canvas>
+	  <canvas id="pieChart"></canvas>
+	</div>
       </section>
 
+      <!-- Transaction Reports Section -->
       <section id="reports" class="hidden">
         <div class="report-header">
           <h2>Transaction Report</h2>
@@ -119,6 +124,10 @@
   </div>
 
   <script src="script.js"></script>
+  <footer style="text-align: center; padding: 10px; font-size: 12px; color: gray;">
+		   © 2025 Momo Dashboard Team. All rights reserved.
+  </footer>
+
 </body>
 
 </html>
