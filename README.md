@@ -52,3 +52,5 @@ Momo-dashboard/
 # Video to our final project 
 This a link to the project video that shows a demo of interactions as if we were a user interacting with the site and it covers both the functionality and the understanding of our work.
 This video shows all of what we just talked about live and working, the readme what is left is a link to the video included
+https://youtu.be/CTHnmTMxo5I
+
